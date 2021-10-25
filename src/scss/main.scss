@@ -1,0 +1,967 @@
+//основной шрифт
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&display=swap");
+//переменные
+@import "_vars";
+//миксины
+@import "_mixins";
+//иконочные шрифты
+@import "_iconsfont";
+//обнуление
+@import "_null";
+
+//общие стили
+html,
+body {
+    height: 100%;
+    color: $mainColor;
+    font-size: $fontSize;
+    font-weight: 600;
+    background-color: #000;
+    position: relative;
+
+    &.lock {
+        overflow: hidden;
+    }
+}
+
+//оболочка
+.wrapper {
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+//контейнеры
+.container {
+    max-width: $maxWidthContainer + 160px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 80px;
+    @include desktop {
+        max-width: 970px;
+    }
+    @include laptop {
+        max-width: 750px;
+    }
+    @include tablets {
+        max-width: none;
+        padding: 0 10px;
+    }
+}
+
+.single-container {
+    max-width: $maxWidthContainer + 30px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 15px;
+    @include desktop {
+        max-width: 970px;
+    }
+    @include laptop {
+        max-width: 750px;
+    }
+    @include tablets {
+        max-width: none;
+        padding: 0 10px;
+    }
+}
+
+//=========================================================================================================
+
+//общие стили(кнопки, обводки, заголовки)
+@import "_general";
+//анимации
+@import "_keyframes";
+//шапка
+@import "_header";
+//подвал
+@import "_footer";
+//стили для страницы каждого рпоекта
+@import "_singleProject";
+//стили для страницы проектов
+@import "_projects";
+//стили слайдера
+@import "../../node_modules/swiper/swiper.scss";
+
+//=========================================================================================================
+
+//первый блок  который встречает
+.mainscreen {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+
+    &__container {
+        z-index: 1;
+        flex: 1 1 auto;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 100px 80px;
+
+        @include tablets {
+            padding: 100px 50px 100px 10px;
+        }
+
+        @include phones {
+            padding: 200px 50px 200px 10px;
+        }
+    }
+
+    &__title {
+        @media (max-height: 600px) {
+            font-size: 40px;
+        }
+    }
+
+    &__text {
+        margin: 0 0 60px 0;
+        cursor: default;
+
+        @media (max-height: 600px) {
+            margin: 0 0 20px 0;
+            font-size: 100px;
+        }
+
+        @include laptop {
+            margin: 0 0 30px 0;
+            font-size: 70px;
+        }
+
+        @include phones {
+            font-size: 60px;
+        }
+    }
+
+    &__bottom {
+        align-self: center;
+        display: flex;
+        justify-content: center;
+        gap: 60px;
+        @media (max-height: 600px) {
+            justify-content: flex-start;
+        }
+        @include laptop {
+            flex-direction: column;
+            align-self: start;
+            gap: 20px;
+        }
+    }
+
+    &__button {
+        max-height: 55px;
+    }
+
+    &__info {
+        font-size: 20px;
+        line-height: 130%;
+        color: #000;
+    }
+
+    //кнопка гоу ту
+    &__go {
+        position: absolute;
+        z-index: 1;
+        bottom: 4%;
+        right: 1%;
+        display: flex;
+        align-items: center;
+        flex-direction: column-reverse;
+        gap: 50px;
+        max-width: 66px;
+        transition: all 0.3s ease 0s;
+
+        //текст
+        span {
+            text-transform: uppercase;
+            font-weight: 700;
+            line-height: 120%;
+            color: #000;
+            transform: rotate(90deg);
+        }
+
+        //иконка
+        &::before {
+            border: 2px solid #000;
+            border-radius: 50%;
+            padding: 15px;
+            font-size: 30px;
+            color: #000;
+            transform: rotate(-90deg);
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+        @include tablets {
+            span {
+                display: none;
+            }
+            &::before {
+                font-size: 20px;
+                padding: 8px;
+            }
+        }
+    }
+
+    @include gradientBackground;
+
+}
+
+//космо спокойствие блок
+.calm {
+
+    //адаптивные падинги при < 1440
+    @include adaptive-value("padding-top", 100, 50, 1);
+    @include adaptive-value("padding-bottom", 100, 50, 1);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        max-width: 800px;
+        align-self: flex-start;
+    }
+
+    &__text-top {
+        line-height: 130%;
+        margin: 100px 0;
+        width: 710px;
+        align-self: flex-end;
+
+        @include desktop {
+            align-self: flex-start;
+            width: auto;
+        }
+
+        @include tablets {
+            margin: 50px 0;
+            font-size: 16px;
+        }
+
+        p {
+            &:not(:last-child) {
+                margin: 0 0 30px 0;
+            }
+        }
+    }
+
+    &__row {
+        display: grid;
+        grid-template: auto / repeat(5, minmax(140px, 300px));
+        gap: 10px;
+        justify-content: space-between;
+
+        @include desktop {
+            grid-template: auto auto / repeat(3, minmax(140px, 300px));
+        }
+
+        @include tablets {
+            display: block;
+        }
+    }
+
+    &__question {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+        margin-bottom: 120px;
+        line-height: 130%;
+
+        &::before {
+            font-size: 67px;
+        }
+
+        @include tablets {
+            margin: 0 0 30px 0;
+            flex-direction: row;
+            font-size: 16px;
+            text-align: left;
+
+            &::before {
+                font-size: 50px;
+            }
+        }
+    }
+
+    &__text-bottom {
+        width: 710px;
+        align-self: flex-end;
+        font-size: 16px;
+        line-height: 130%;
+
+        @include desktop {
+            align-self: flex-start;
+            width: auto;
+        }
+
+        @include tablets {
+            margin: 50px 0 0 0;
+        }
+
+        p {
+            &:not(:last-child) {
+                margin: 0 0 30px 0;
+            }
+        }
+    }
+}
+
+//что мы делаем блок
+.services {
+
+    //адаптивные падинги при < 1440
+    @include adaptive-value("padding-top", 100, 50, 1);
+    @include adaptive-value("padding-bottom", 100, 50, 1);
+
+    &__container {
+        @include tablets {
+            padding: 0 10px;
+        }
+    }
+
+    &__title {
+        margin: 0 0 150px 0;
+        @include tablets {
+            margin: 0 0 40px 0;
+        }
+    }
+
+    &__number {
+        flex: 0 0 66px;
+
+        //адаптивные шрифт при < 1440
+        @include adaptive-value("font-size", 55, 25, 1);
+        @include tablets {
+            flex: 0 0 40px;
+        }
+    }
+
+    &__item {
+        display: flex;
+        gap: 80px;
+        align-items: center;
+        background-color: transparent;
+        width: 100%;
+        margin-bottom: 30px;
+
+        &:hover {
+            .services__number {
+                color: #fff;
+            }
+
+            //крестик кручу
+            &::before {
+                transform: rotate(-180deg);
+            }
+        }
+
+        .services__btn-info {
+            position: relative;
+            //что бы занял все свободное место текст кнопки
+            flex: 1 1 auto;
+            text-transform: uppercase;
+            line-height: 135%;
+            font-weight: 700;
+            color: #fff;
+            text-align: left;
+
+            //адаптивные шрифт при < 1440
+            @include adaptive-value("font-size", 35, 14, 1);
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+
+                //адаптивная высота полоски под кпопкой при <1440
+                @include adaptive-value("height", 2.5, 1.5, 1);
+                width: 100%;
+                background-color: #fff;
+                transition: all 0.3s ease 0s;
+            }
+        }
+
+        //плюсик справа от кнопки
+        &::before {
+            flex: 0 0 40px;
+            background-color: transparent;
+            color: #fff;
+            order: 2;
+            transition: all 0.5s ease 0s;
+
+            //адаптивные шрифт при < 1440
+            @include adaptive-value("font-size", 40, 16, 1);
+            @include tablets {
+                flex: 0 0 30px;
+            }
+        }
+
+        //когда развернут спойлер повернуть
+        &.active {
+            &::before {
+                transform: rotate(-45deg);
+            }
+        }
+
+        @include tablets {
+            gap: 15px;
+        }
+    }
+
+    &__text {
+        padding: 0 120px 0 146px;
+        margin-bottom: 30px;
+        line-height: 130%;
+
+        //адаптивные шрифт при < 1440
+        @include adaptive-value("font-size", 20, 13, 1);
+        @include tablets {
+            padding: 0;
+        }
+    }
+}
+
+//блок клиетов
+.clients {
+
+    //адаптивные падинги при < 1440
+    @include adaptive-value("padding-top", 100, 50, 1);
+    @include adaptive-value("padding-bottom", 100, 50, 1);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        max-width: 700px;
+        margin: 0 0 90px 0;
+        @include laptop {
+            margin: 0 0 40px 0;
+        }
+    }
+
+    &__text {
+        align-self: flex-end;
+        line-height: 130%;
+        margin: 0 0 120px 0;
+        max-width: 710px;
+
+        //адаптивные шрифт при < 1440
+        @include adaptive-value("font-size", 20, 13, 1);
+
+        p {
+            &:last-child {
+                margin: 30px 0 0 0;
+                max-width: 420px;
+            }
+        }
+
+        @include laptop {
+            margin: 0 0 40px 0;
+        }
+    }
+
+    //cслайдер
+    &__slider {
+        padding: 0 50px;
+
+        @include laptop {
+            padding: 0;
+        }
+    }
+
+    &__slider-body {
+        @include laptop {
+            margin: 0 0 15px 0;
+        }
+    }
+
+    &__image {
+        padding-bottom: 85%;
+
+        img {
+            object-fit: contain;
+        }
+    }
+
+    //при разрешении <991 для скроллбара (скроллбар по центру кнопки по бокам, подсмотрел в примерах слайдера)
+    &__slider-arrows {
+        display: grid;
+        grid-template-columns: 36px 1fr 36px;
+        gap: 20px;
+    }
+
+    //сам скроллбар
+    &__slider-scrollbar {
+        //сам скроллбар (только на <991)
+        @include laptop {
+            border-radius: 50%;
+            position: relative;
+            background: #fff;
+            height: 2px;
+            top: 50%;
+
+            //шарик на скроолл баре (ширина в js)
+            .swiper-scrollbar-drag {
+                height: 10px;
+                position: relative;
+                background: #fff;
+                border-radius: 50%;
+                left: 0;
+                top: -5px;
+            }
+        }
+    }
+
+    //стрелка вперед
+    &__arrow-next {
+        z-index: 150;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        //сначала абсолют пока нету скролла
+        position: absolute;
+        right: 0;
+        top: 50%;
+        padding: 5px;
+        transform: translate(0px, -50%) rotate(-180deg);
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+
+        &:hover {
+            border: 3px solid #fff;
+        }
+
+        @include laptop {
+            //когда появится скролл
+            position: relative;
+            right: 0;
+            top: 0;
+            transform: translate(0px, 0px) rotate(-180deg);
+            width: 36px;
+        }
+    }
+
+    //стрелка нащад
+    &__arrow-prev {
+        z-index: 150;
+        //сначала абсолют пока нету скролла
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate(0px, -50%);
+        border: 2px solid #fff;
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 5px;
+
+        &:hover {
+            border: 3px solid #fff;
+        }
+
+        @include laptop {
+            //когда появится скролл
+            position: relative;
+            right: 0;
+            top: 0;
+            transform: translate(0px, 0px);
+            width: 36px;
+        }
+    }
+}
+
+//блок проектов
+.projects {
+
+    //адаптивные падинги при < 1440
+    @include adaptive-value("padding-top", 100, 50, 1);
+    @include adaptive-value("padding-bottom", 100, 50, 1);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        //адаптивный отспут при <1440
+        @include adaptive-value("margin-bottom", 80, 50, 1);
+    }
+
+    //глаз (смотреть все)
+    &__watch {
+        color: inherit;
+        display: inline-flex;
+        align-items: center;
+        align-self: flex-end;
+        gap: 12px;
+        font-weight: 700;
+        line-height: 120%;
+        text-transform: uppercase;
+        margin: 0 0 30px 0;
+        transition: all 0.3s ease 0s;
+
+        //адаптивные шрифт при < 1440
+        @include adaptive-value("font-size", 20, 14, 1);
+
+        //сам глаз
+        &::before {
+            font-size: 34px;
+            color: #fff;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    &__body {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(100px, 466px));
+        justify-content: space-between;
+        gap: 23px;
+
+        @include tablets {
+            display: block;
+        }
+    }
+
+    &__column {
+        display: block;
+
+        &:hover {
+            .projects__image {
+                filter: grayscale(0);
+            }
+        }
+
+        @include tablets {
+            margin: 0 0 50px 0;
+        }
+    }
+
+    &__image {
+        //адаптивный отспут
+        @include adaptive-value("margin-bottom", 40, 20, 1);
+
+        padding: 0 0 100% 0;
+        filter: grayscale(1);
+        transition: all 1s ease 0s;
+
+        &:hover {
+            filter: grayscale(0);
+        }
+    }
+
+    &__label {
+        font-weight: 700;
+        text-transform: uppercase;
+        line-height: 120%;
+        color: #fff;
+
+        //адаптивные шрифт при < 1440
+        @include adaptive-value("font-size", 20, 14, 1);
+    }
+}
+
+//блок с формой
+.connection {
+
+    //адаптивные падинги при < 1440
+    @include adaptive-value("padding-top", 100, 50, 1);
+    @include adaptive-value("padding-bottom", 100, 50, 1);
+
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+
+    &__container {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+
+        @include laptop {
+            align-items: center;
+        }
+    }
+
+    &__title {
+        color: #000;
+
+        //адаптивный отспут
+        @include adaptive-value("margin-bottom", 100, 40, 1);
+        align-self: start;
+    }
+
+    @include gradientBackground;
+}
+
+//Форма обратной свзяи
+.form-connection {
+    max-width: 710px;
+    position: relative;
+
+    //прячу когда отправлено сообщение
+    &.hide {
+        display: none;
+    }
+
+    &__input {
+        width: 100%;
+        border: 2.5px solid #000;
+        border-radius: 50px;
+        background-color: transparent;
+
+        //адаптивные отсутп < 1440
+        @include adaptive-value("margin-bottom", 15, 7, 1);
+        padding: 18px 30px;
+        line-height: 130%;
+
+        //адаптивные шрифт при < 1440
+        @include adaptive-value("font-size", 20, 13, 1);
+
+        &::placeholder {
+            color: #000;
+            line-height: 130%;
+
+            //адаптивные шрифт при < 1440
+            @include adaptive-value("font-size", 20, 13, 1);
+            font-weight: 600;
+        }
+    }
+
+    &__textarea {
+        width: 100%;
+        border: 2.5px solid #000;
+        border-radius: 50px;
+        background-color: transparent;
+        resize: none;
+        //адаптивные отсутп < 1440
+        @include adaptive-value("margin-bottom", 30, 13, 1);
+        padding: 30px;
+        max-height: 230px;
+
+        //адаптивные шрифт при < 1440
+        @include adaptive-value("font-size", 20, 13, 1);
+        line-height: 130%;
+
+        &::placeholder {
+            color: #000;
+            line-height: 130%;
+
+            //адаптивные шрифт при < 1440
+            @include adaptive-value("font-size", 20, 13, 1);
+            font-weight: 600;
+        }
+    }
+
+    &__bottom {
+        display: flex;
+
+        //адаптивное пространство между флекс элементами
+        @include adaptive-value("gap", 57, 20, 1);
+
+        @include laptop {
+            flex-direction: column;
+        }
+    }
+
+    &__submit {
+        padding: 15px 110px;
+        max-height: 48px;
+        max-width: 280px;
+
+        &:disabled {
+            background-color: rgb(46, 46, 46);
+            color: rgba(255, 255, 255, 0.7);
+            cursor: default;
+
+            &:hover {
+                transform: scale(1);
+            }
+        }
+    }
+
+    &__checkbox {
+        color: #000;
+        line-height: 130%;
+        margin: 0 0 15px 0;
+
+        input {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            z-index: -1;
+
+            &:checked {
+                + label {
+                    &::before {
+                        background-image: url("../img/check.svg");
+                    }
+                }
+            }
+        }
+
+        label {
+
+            //адаптивные шрифт при < 1440
+            @include adaptive-value("font-size", 20, 13, 1);
+            display: flex;
+            gap: 25px;
+            cursor: pointer;
+            align-items: center;
+            position: relative;
+
+            //полоска снизу при ховере
+            &::after {
+                position: absolute;
+                content: "";
+                height: 1px;
+                width: 0;
+                bottom: -2px;
+                left: 0;
+                background-color: #000;
+                transition: all 0.3s ease 0s;
+            }
+
+            //кастомный чекбокс
+            &::before {
+                content: "";
+                flex: 0 0 20px;
+                height: 20px;
+                border: 2px solid #000;
+                border-radius: 50%;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: 50% 50%;
+            }
+
+            &:hover {
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    &__time {
+        color: #000;
+        line-height: 130%;
+
+        //адаптивные шрифт при < 1440
+        @include adaptive-value("font-size", 20, 13, 1);
+        display: flex;
+        gap: 25px;
+        align-items: center;
+
+        &::before {
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+}
+
+//письмо отправлено или нет
+.submit-message {
+    max-width: 710px;
+    text-align: left;
+    display: none;
+
+    &.show {
+        display: block;
+    }
+
+    &__title {
+        color: #000;
+        font-weight: 700;
+
+        //адаптивные шрифт при < 1440
+        @include adaptive-value("font-size", 35, 20, 1);
+        line-height: 130%;
+        text-transform: uppercase;
+        margin: 0 0 30px 0;
+    }
+
+    &__text {
+        color: #000;
+        font-weight: 700;
+
+        //адаптивные шрифт при < 1440
+        @include adaptive-value("font-size", 35, 20, 1);
+        line-height: 130%;
+        margin: 0 0 30px 0;
+    }
+
+    &__img {
+        position: relative;
+        padding: 0 0 57% 0;
+    }
+}
+
+.swiper-container {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    //padding: 0;
+    /* Fix of Webkit flickering */
+    z-index: 1;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100vh;
+    min-height: 0;
+    min-width: 0;
+}
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before {
+        content: "";
+        position: absolute;
+        border-bottom: 5px solid #fff;
+        border-left: 5px solid #fff;
+        border-radius: 50%;
+        @include adaptive-value("padding", 30, 10, 1);
+        @include adaptive-value("width", 140, 60, 1);
+        @include adaptive-value("height", 140, 60, 1);
+        animation: loadingSite 3s infinite ease;
+    }
+
+    &.loaded {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: all .5s;
+    }
+
+    img {
+        max-width: 100%;
+    }
+}

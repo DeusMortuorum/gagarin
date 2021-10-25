@@ -1,0 +1,82 @@
+// breakpoints
+@mixin desktop {
+    @media screen and (max-width:  $desktop+px) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media screen and (max-width: 991.98px) {
+        @content;
+    }
+}
+
+@mixin tablets {
+    @media screen and (max-width: 767.98px) {
+        @content;
+    }
+}
+
+@mixin phones {
+    @media screen and (max-width: 479.98px) {
+        @content;
+    }
+}
+
+//========================================================================================================
+
+// Адаптивность элементов
+
+@mixin adaptive-value($property, $startSize, $minSize, $type) {
+    //$startSize - размер на ширине макета, $minSize - минимальный размер для телефона
+    $addSize: $startSize - $minSize;
+    @if $type==1 {
+        // Применять только меньше контейнера
+        #{$property}: $startSize + px;
+        @media (max-width: #{$maxWidthContainer + px}) {
+            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / (#{$maxWidthContainer} - 320)));
+        }
+    } @else if $type==2 {
+        // Применять только больше контейнера
+        #{$property}: $startSize + px;
+        @media (min-width: #{$maxWidthContainer + px}) {
+            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / (#{$maxWidthContainer} - 320)));
+        }
+    } @else {
+        // Применять всегда
+        #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / (#{$maxWidthContainer} - 320)));
+    }
+}
+
+//========================================================================================================
+
+//Градиентные фоны формы и первого блока
+
+@mixin gradientBackground {
+    // градиент фоны общ
+    &::after,
+    &::before {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+    }
+
+    //градиент фон
+    &::after {
+        background: radial-gradient(circle, rgba(20, 255, 241, 1) 0%, rgba(20, 255, 241, 0) 30%);
+        animation: gradientAfterMoves 10s infinite ease;
+        top: -50%;
+        left: -80%;
+    }
+
+    //градиент фон
+    &::before {
+        background: radial-gradient(circle, rgba(187, 0, 255, 1) 0%, rgba(187, 0, 255, 0) 30%);
+        animation: gradientBeforeMoves 10s infinite ease;
+        top: -30%;
+        left: -20%;
+    }
+}
+
+//========================================================================================================

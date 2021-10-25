@@ -1,0 +1,203 @@
+//картинки
+.ibg {
+    position: relative;
+
+    img {
+        max-width: 100%;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+    }
+}
+
+// обводка букв
+.text-stroke {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke-width: 3.8px;
+    -webkit-text-stroke-color: #fff;
+
+    //адаптивные шрифт при < 1440
+    @include adaptive-value("font-size", 157, 40, 1);
+    line-height: 110%;
+    letter-spacing: 0.02em;
+    transition: all 0.3s ease 0s;
+
+    @include tablets {
+        -webkit-text-stroke-width: 2px;
+    }
+
+    &:hover {
+        color: #fff;
+    }
+
+    &-black {
+        -webkit-text-stroke-color: #000;
+
+        &:hover {
+            color: transparent;
+        }
+    }
+}
+
+//заголовки
+.title {
+    font-weight: 700;
+
+    //адаптивные шрифт при < 1440
+    @include adaptive-value("font-size", 90, 28, 1);
+    text-transform: uppercase;
+    line-height: 110%;
+
+    &-black {
+        color: #000;
+    }
+}
+
+//кнопк
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1.8px solid #000000;
+    background-color: #000;
+    border-radius: 23.5px;
+    font-weight: 700;
+    line-height: 120%;
+    text-transform: uppercase;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    //адаптивная ширина кнопоко
+    @include adaptive-value("padding-left", 75, 30, 1);
+    @include adaptive-value("padding-right", 75, 30, 1);
+    color: inherit;
+    transition: all 0.3s ease 0s;
+
+    //адаптивные шрифт при < 1440
+    @include adaptive-value("font-size", 20, 14, 1);
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+//разделитель градиент
+.separator {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(271deg, #14fff1, #ffffff, #bd00ff);
+    background-size: 300% 300%;
+    animation: gradientSeparator 5s infinite ease;
+}
+
+//фильтр на странице проекты
+.filter {
+    display: inline-block;
+    color: #5E5E5E;
+
+    //адаптивные шрифт при < 1440
+    @include adaptive-value("font-size", 20, 13, 1);
+    padding: 5px;
+    line-height: 26px;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    &.active {
+
+        //адаптивные отступы
+        @include adaptive-value("padding-top", 10, 5, 1);
+        @include adaptive-value("padding-bottom", 10, 5, 1);
+        @include adaptive-value("padding-left", 30, 20, 1);
+        @include adaptive-value("padding-right", 30, 20, 1);
+
+        color: #fff;
+        border: 2px solid #FFFFFF;
+        border-radius: 23px;
+    }
+}
+
+//кнопка на главную на стр проекты
+.project-button {
+    display: inline-flex;
+    gap: 25px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 120%;
+    align-items: center;
+
+    //адаптивные шрифт при < 1440
+    @include adaptive-value("font-size", 20, 14, 1);
+
+    //стрелочка
+    &::before {
+
+        //адаптивные шрифт при < 1440
+        @include adaptive-value("font-size", 20, 12, 1);
+
+        border: 2px solid #fff;
+        border-radius: 50%;
+        padding: 8px;
+    }
+
+    &:hover {
+        span {
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+
+    span {
+        position: relative;
+
+        //полоска при ховере
+        &::after {
+            position: absolute;
+            content: "";
+            height: 1px;
+            width: 0;
+            bottom: -2px;
+            left: 0;
+            background-color: #fff;
+            transition: all 0.3s ease 0s;
+        }
+    }
+}
+
+//скролл
+::-webkit-scrollbar {
+    width: 15px;
+    background-color: transparent;
+}
+
+//прямоугольник внутри скролла
+::-webkit-scrollbar-thumb {
+    height: 30%;
+    border-radius: 30px;
+    background-color: #8b8b8b;
+    border: 2px solid #000;
+    transition: all 0.3s ease 0s;
+
+    &:hover {
+        background-color: #686868;
+    }
+
+    &:active {
+        background-color: #4e4e4e;
+    }
+}
+
+.contain {
+    img {
+        object-fit: contain;
+    }
+}

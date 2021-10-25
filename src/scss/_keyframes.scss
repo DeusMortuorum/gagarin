@@ -1,0 +1,70 @@
+@keyframes gradientAfterMoves {
+    0% {
+        top: -50%;
+        left: -80%;
+    }
+    25% {
+        left: -20%;
+        top: -70%;
+    }
+    50% {
+        left: -20%;
+        top: -20%;
+    }
+    75% {
+        left: -60%;
+        top: -60%;
+    }
+    100% {
+        top: -50%;
+        left: -80%;
+    }
+}
+
+@keyframes gradientBeforeMoves {
+    0% {
+        top: -30%;
+        left: -20%;
+    }
+    25% {
+        top: -30%;
+        left: -80%;
+    }
+    50% {
+        right: -80%;
+        top: -80%;
+    }
+    75% {
+        right: -40%;
+        top: -40%;
+    }
+    100% {
+        top: -30%;
+        left: -20%;
+    }
+}
+
+@keyframes gradientSeparator {
+    0% {
+        background-position: 0 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0 50%
+    }
+}
+
+@keyframes loadingSite {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+

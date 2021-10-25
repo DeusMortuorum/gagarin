@@ -1,0 +1,136 @@
+.project-logo {
+    position: absolute;
+    left: 1%;
+    top: 20px;
+}
+
+.project-page {
+    &__main {
+        @include adaptive-value("padding-top", 150, 100, 1);
+        @include adaptive-value("padding-bottom", 100, 50, 1);
+    }
+
+    //верхняя полоса с кнопкой назад и фильтром
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+
+        @include laptop {
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+    }
+
+    //фильтры
+    &__filters {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    &__filter {
+        transition: all 0.3s ease 0s;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    &__item {
+        @include adaptive-value("margin-top", 100, 50, 1);
+        @include adaptive-value("margin-bottom", 100, 50, 1);
+    }
+}
+
+.item-project {
+    &.hide {
+        display: none;
+    }
+
+    &:hover {
+        img {
+            filter: grayscale(0);
+        }
+    }
+
+    &__image {
+        display: block;
+        padding: 0 0 28% 0;
+        cursor: pointer;
+
+        @include adaptive-value("margin-bottom", 40, 20, 1);
+
+        img {
+            filter: grayscale(1);
+            transition: all 1s ease 0s;
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 15px;
+
+        @include laptop {
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 15px;
+        }
+    }
+
+    //название проекта
+    &__label {
+        text-transform: uppercase;
+        line-height: 130%;
+        font-weight: 700;
+        color: #fff;
+        flex: 0 1 555px;
+
+        @include adaptive-value("font-size", 35, 14, 1);
+
+        &:hover {
+            span {
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+
+        span {
+            position: relative;
+
+            //при ховере полоса
+            &::after {
+                position: absolute;
+                content: "";
+                height: 1px;
+                width: 0;
+                bottom: -2px;
+                left: 0;
+                background-color: #fff;
+                transition: all 0.3s ease 0s;
+            }
+        }
+
+        @include laptop {
+            flex: 1 1 auto;
+        }
+    }
+
+    &__filters {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    &__filter {
+        cursor: default;
+    }
+}
